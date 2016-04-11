@@ -1,0 +1,72 @@
+CREATE TABLE Pirates (name varchar(10), mascot VarChar(10), conquests Integer) PRIMARY KEY(name);
+
+INSERT INTO Pirates VALUES FROM ("Bob", "parrot", 29);
+INSERT INTO Pirates VALUES FROM ("Joe", “skull”, 2);
+INSERT INTO Pirates VALUES FROM ("Davy", "octopus", 345);
+
+SHOW Pirates;
+SAVE Pirates;
+
+CREATE TABLE Pirates2 (name varchar(10), mascot VarChar(10), conquests Integer) PRIMARY KEY(name);
+
+SHOW Pirates2;
+
+INSERT INTO Pirates2 VALUES FROM RELATION project (name, mascot, conquests) Pirates;
+
+SHOW Pirates2;
+
+few_conquests <- select (conquests <= 10 && mascot == "octopus") Pirates2;
+
+SHOW few_conquests;
+
+DELETE FROM Pirates2 WHERE conquests <= 30;
+
+SHOW Pirates2;
+
+relation_project <- project (name, mascot) Pirates;
+relation2_project <- project (name, mascot) Pirates2;
+
+SHOW relation_project;
+SHOW relation2_project;
+
+rename_relation <- rename (Pirate_Name, Flag) (project (name, mascot) Pirates);
+show rename_relation;
+show Pirates;
+
+CREATE TABLE Pirates1 (name varchar(10), mascot VarChar(10), conquests Integer) PRIMARY KEY(name);
+
+show Pirates1;
+
+insert into Pirates1 values from ("Steve", "fish", 12);
+
+show Pirates1;
+
+insert into Pirates2 VALUES FROM ("Jerry", "cannon", 90);
+
+set_union <- Pirates1 + Pirates2;
+show Pirates1;
+show Pirates2;
+show set_union;
+
+set_difference <- set_union - Pirates1;
+show set_union;
+show Pirates1;
+show set_difference;
+
+cross_product <- set_union * Pirates1;
+show set_union;
+show Pirates1;
+show cross_product;
+
+CREATE TABLE Pirates3 (name varchar(10), mascot VarChar(10), conquests Integer) PRIMARY KEY(name);
+Insert Into Pirates3 Values From ("Joe", "skull", 2);
+Insert into Pirates3 values from ("Davy", "octopus", 345);
+
+show Pirates3;
+
+UPDATE Pirates3 set conquests = 0, mascot = "sad face" WHERE conquests <= 30;
+SHOW Pirates3;
+
+CLOSE Pirates3;
+
+EXIT;

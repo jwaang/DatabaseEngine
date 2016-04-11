@@ -1,0 +1,4 @@
+CREATE TABLE Pirates3 (name VARCHAR(10), mascot VARCHAR(10), conquests INTEGER) PRIMARY KEY (name);
+INSERT INTO Pirates3 VALUES FROM ("Joe", "sad face", 0);
+INSERT INTO Pirates3 VALUES FROM ("Davy", "octopus", 345);
+EXIT;
